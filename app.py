@@ -9,10 +9,9 @@ redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 
 app = Flask(__name__)
 
-print(hello.helloworld())
-
 @app.route("/")
 def hello():
+   
     try:
         visits = redis.incr("counter")
     except RedisError:
